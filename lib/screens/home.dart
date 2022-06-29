@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../themes/theme.dart';
+import '../widgets/drawer_item.dart';
+import '../widgets/post.dart';
+import '../widgets/user_profile_banner.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: AppTheme.homeBackgroundColor,
       appBar: AppBar(
         backgroundColor: AppTheme.backgroundColor,
         elevation: 0.0,
@@ -33,7 +36,7 @@ class HomeScreen extends StatelessWidget {
         leading: Builder(
           builder: (ctx) => IconButton(
             onPressed: () {
-              Scaffold.of(ctx).openEndDrawer();
+              Scaffold.of(ctx).openDrawer();
             },
             icon: Icon(
               Icons.menu,
@@ -46,12 +49,55 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: AppTheme.backgroundColor,
         child: ListView(
           children: const [
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('HOME'),
-            )
+            SizedBox(
+              height: 30,
+            ),
+            DrawerItem(
+              title: 'HOME',
+              icon: Icons.home,
+            ),
+            DrawerItem(title: 'Recommands', icon: Icons.record_voice_over),
           ],
         ),
+      ),
+      body: Column(
+        children: [
+          const UserProfileBanner(),
+          Expanded(
+            child: ListView(
+              children: const [
+                Post(
+                  fullname: 'Abli Nawal',
+                  tags: 2,
+                  content:
+                      'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
+                  speciality: 'Mobile Developper',
+                ),
+                Post(
+                  fullname: 'Ennachat Ayoub',
+                  tags: 1,
+                  content:
+                      'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
+                  speciality: 'Web Developper',
+                ),
+                Post(
+                  fullname: 'Abli Nawal',
+                  tags: 2,
+                  content:
+                      'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
+                  speciality: 'Mobile Developper',
+                ),
+                Post(
+                  fullname: 'Ennachat Ayoub',
+                  tags: 1,
+                  content:
+                      'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
+                  speciality: 'Web Developper',
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
