@@ -11,6 +11,7 @@ class RecommandsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var bounds=MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppTheme.backgroundColor,
@@ -26,7 +27,7 @@ class RecommandsScreen extends StatelessWidget {
       ),
       body: Container(
         margin: const EdgeInsets.all(8),
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.symmetric(vertical:8,horizontal: bounds.width/10),
         color: AppTheme.backgroundColor,
         child: ListView(
           children: const [
