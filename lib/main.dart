@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import './screens/login.dart';
 import './screens/home.dart';
 import './screens/register.dart';
+import './screens/search_screen.dart';
+import './screens/add_post_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +36,9 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.routeName:(context) => const LoginScreen(),
         RegisterScreen.routeName:(context) => const RegisterScreen(),
-        HomeScreen.routeName:(context) => const HomeScreen()
+        HomeScreen.routeName:(context) => const HomeScreen(),
+        SearchScreen.routeName:(context) => const SearchScreen(),
+        AddPostScreen.routeName:(context) => const AddPostScreen()
       },
     );
   }

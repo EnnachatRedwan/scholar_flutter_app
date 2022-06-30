@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../themes/theme.dart';
 import '../widgets/post.dart';
+import '../widgets/search.dart';
 import '../widgets/user_profile_banner.dart';
+import '../widgets/drawer_list.dart';
 
 class DesktopLayout extends StatelessWidget {
   const DesktopLayout({Key? key}) : super(key: key);
@@ -23,6 +25,7 @@ class DesktopLayout extends StatelessWidget {
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold),
         ),
+        leading: null,
       ),
       body: Row(
         children: [
@@ -32,30 +35,7 @@ class DesktopLayout extends StatelessWidget {
               margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(8),
               color: AppTheme.backgroundColor,
-              child: ListView(
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      'HOME',
-                      style: TextStyle(fontSize: AppTheme.smalTitleSize),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      'Recommands',
-                      style: TextStyle(fontSize: AppTheme.smalTitleSize),
-                    ),
-                  ),
-                ],
-              ),
+              child: const DrawerList(),
             ),
           ),
           Flexible(
@@ -100,13 +80,9 @@ class DesktopLayout extends StatelessWidget {
               ],
             ),
           ),
-          Flexible(
+          const Flexible(
             flex: 1,
-            child: Container(
-              margin: const EdgeInsets.all(8),
-              padding: const EdgeInsets.all(8),
-              color: AppTheme.backgroundColor,
-            ),
+            child: Search(),
           ),
         ],
       ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../themes/theme.dart';
-import '../widgets/drawer_item.dart';
+import '../widgets/drawer_list.dart';
 import '../widgets/post.dart';
+import '../widgets/search_button.dart';
 import '../widgets/user_profile_banner.dart';
 
 class MobileLayout extends StatelessWidget {
@@ -24,14 +25,8 @@ class MobileLayout extends StatelessWidget {
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
+        actions: const [
+          SearchButton(),
         ],
         leading: Builder(
           builder: (ctx) => IconButton(
@@ -45,20 +40,9 @@ class MobileLayout extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Drawer(
+      drawer: const Drawer(
         backgroundColor: AppTheme.backgroundColor,
-        child: ListView(
-          children: const [
-            SizedBox(
-              height: 30,
-            ),
-            DrawerItem(
-              title: 'HOME',
-              icon: Icons.home,
-            ),
-            DrawerItem(title: 'Recommands', icon: Icons.record_voice_over),
-          ],
-        ),
+        child: DrawerList(),
       ),
       body: Column(
         children: [

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../themes/theme.dart';
+import '../widgets/drawer_list.dart';
 import '../widgets/post.dart';
+import '../widgets/search_button.dart';
 import '../widgets/user_profile_banner.dart';
 
 class TabletLayout extends StatelessWidget {
@@ -23,15 +25,10 @@ class TabletLayout extends StatelessWidget {
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
+        actions: const [
+            SearchButton(),
         ],
+        leading: null,
       ),
       body: Row(
         children: [
@@ -41,30 +38,7 @@ class TabletLayout extends StatelessWidget {
               margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(8),
               color: AppTheme.backgroundColor,
-              child: ListView(
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      'HOME',
-                      style: TextStyle(fontSize: AppTheme.smalTitleSize),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      'Recommands',
-                      style: TextStyle(fontSize: AppTheme.smalTitleSize),
-                    ),
-                  ),
-                ],
-              ),
+              child: const DrawerList(),
             ),
           ),
           Flexible(

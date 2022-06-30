@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../themes/theme.dart';
+import '../screens/add_post_screen.dart';
 
 class UserProfileBanner extends StatelessWidget {
   const UserProfileBanner({
@@ -11,20 +12,20 @@ class UserProfileBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppTheme.backgroundColor,
-      margin: const EdgeInsets.only(top: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ListTile(
             leading: CircleAvatar(
-                    backgroundColor: Theme.of(context).primaryColor.withOpacity(.5),
-                    child: const Icon(
-                      Icons.person,
-                      color: Colors.white,
-                      size: 35,
-                    ),
-                  ),
+              backgroundColor: Theme.of(context).primaryColor.withOpacity(.5),
+              child: const Icon(
+                Icons.person,
+                color: Colors.white,
+                size: 35,
+              ),
+            ),
             title: const Text(
               'Ennachat Redwan',
               style: TextStyle(fontSize: AppTheme.titleSize),
@@ -37,7 +38,9 @@ class UserProfileBanner extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(AddPostScreen.routeName);
+            },
             child: Container(
               constraints: const BoxConstraints(maxWidth: 400),
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -58,7 +61,7 @@ class UserProfileBanner extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

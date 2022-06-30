@@ -1,5 +1,4 @@
 class Bounds{
-  static int mobileSize=600;
-  static int tabletSize=800;
-  static int desktopSize=1000;
+  static int mobileSize=800;
+  static int tabletSize=1200;
 }

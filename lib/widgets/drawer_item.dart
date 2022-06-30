@@ -14,14 +14,18 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:  20,vertical: 10),
+    return InkWell(
+      onTap: () {
+        
+      },
       child: ListTile(
         leading: Icon(icon),
         title: Text(
           title,
           style: const TextStyle(
-              color: AppTheme.drawerTextColor, fontSize: AppTheme.textSize),
+            color: AppTheme.drawerTextColor,
+            fontSize: AppTheme.textSize,
+          ),
         ),
       ),
     );
