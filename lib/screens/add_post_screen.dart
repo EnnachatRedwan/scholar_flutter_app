@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../themes/theme.dart';
 import '../widgets/back_button.dart';
+import '../widgets/user_tagg.dart';
 
 class AddPostScreen extends StatelessWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -35,6 +36,19 @@ class AddPostScreen extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
               maxLines: 7,
+            ),
+            Container(
+              height: 300,
+              child: ListView(
+                children: const [
+                  UserTag(name: 'Ennachat Redwan'),
+                  UserTag(name: 'Ennachat Redwan'),
+                  UserTag(name: 'Ennachat Redwan'),
+                  UserTag(name: 'Ennachat Redwan'),
+                  UserTag(name: 'Ennachat Redwan'),
+                  UserTag(name: 'Ennachat Redwan'),
+                ],
+              ),
             ),
             InkWell(
               onTap: () {},
