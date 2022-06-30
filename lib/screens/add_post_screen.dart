@@ -37,7 +37,7 @@ class AddPostScreen extends StatelessWidget {
               ),
               maxLines: 7,
             ),
-            Container(
+            SizedBox(
               height: 300,
               child: ListView(
                 children: const [
