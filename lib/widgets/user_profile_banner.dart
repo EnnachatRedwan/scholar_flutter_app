@@ -11,6 +11,7 @@ class UserProfileBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppTheme.backgroundColor,
+      margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

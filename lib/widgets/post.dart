@@ -35,7 +35,7 @@ class Post extends StatelessWidget {
             ),
             title: Text(
               fullname,
-              style: const TextStyle(fontSize: AppTheme.smalTitleSize),
+              style: const TextStyle(fontSize: AppTheme.smalTitleSize,color: AppTheme.textColor),
             ),
             subtitle: Text(
               speciality,
@@ -71,7 +71,7 @@ class Post extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               content,
-              style: const TextStyle(fontSize: AppTheme.textSize),
+              style: const TextStyle(fontSize: AppTheme.textSize,color: AppTheme.textColor,),
             ),
           ),
         ],
