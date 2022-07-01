@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:scholar_app/models/user.dart';
 
 import '../themes/theme.dart';
 import './user_tile.dart';
+import '../apis/search_api.dart';
 
-class Search extends StatelessWidget {
+class Search extends StatefulWidget {
   const Search({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<Search> createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
+  List<User> _users = [];
+
+  void _fetchData(String value) async {
+    List<User> users=[];
+    if (value.trim().isNotEmpty) {
+      users = await SearchApi.fetchFullName(value);
+    }
+    setState(() {
+      _users = users;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +35,23 @@ class Search extends StatelessWidget {
       color: AppTheme.backgroundColor,
       child: Column(
         children: [
-          const TextField(
-            decoration: InputDecoration(
+          TextField(
+            decoration: const InputDecoration(
               labelText: 'Search',
               prefixIcon: Icon(Icons.search),
               border: OutlineInputBorder(),
             ),
+            onChanged: (value) {
+              _fetchData(value);
+            },
           ),
           Expanded(
-            child: ListView(
-              children: const [
-                UserTile(
-                    fullname: 'Abli Nawal', speciality: 'Mobile Developper'),
-              ],
+            child: ListView.builder(
+              itemCount: _users.length,
+              itemBuilder: (_, i) => UserTile(
+                  fullname: _users[i].fullname,
+                  speciality: _users[i].speciality,
+                  guid: _users[i].guid),
             ),
           ),
         ],

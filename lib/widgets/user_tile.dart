@@ -7,10 +7,12 @@ class UserTile extends StatelessWidget {
     Key? key,
     required this.fullname,
     required this.speciality,
+    required this.guid
   }) : super(key: key);
 
   final String fullname;
   final String speciality;
+  final String guid;
 
   @override
   Widget build(BuildContext context) {

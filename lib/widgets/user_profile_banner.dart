@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../models/user.dart';
+import '../providers/user_provider.dart';
 import '../themes/theme.dart';
 import '../screens/add_post_screen.dart';
+import 'package:provider/provider.dart';
 
 class UserProfileBanner extends StatelessWidget {
   const UserProfileBanner({
@@ -10,6 +13,7 @@ class UserProfileBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    User? user=Provider.of<UserProvider>(context).user;
     return Container(
       color: AppTheme.backgroundColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
@@ -26,13 +30,13 @@ class UserProfileBanner extends StatelessWidget {
                 size: 35,
               ),
             ),
-            title: const Text(
-              'Ennachat Redwan',
-              style: TextStyle(fontSize: AppTheme.titleSize),
+            title: Text(
+              user!.fullname,
+              style: const TextStyle(fontSize: AppTheme.titleSize),
             ),
-            subtitle: const Text(
-              'Full-Stack Developer',
-              style: TextStyle(
+            subtitle: Text(
+              user.speciality,
+              style: const TextStyle(
                   fontSize: AppTheme.subTitleSize,
                   color: AppTheme.subTextColor),
             ),

@@ -15,16 +15,13 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bounds = MediaQuery.of(context).size;
-    return InkWell(
-      onTap: (){},
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: bounds.height * padding),
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: AppTheme.textColor,
-            fontSize: AppTheme.bigTitleSize,
-          ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: bounds.height * padding),
+      child: Text(
+        title,
+        style: const TextStyle(
+          color: AppTheme.textColor,
+          fontSize: AppTheme.bigTitleSize,
         ),
       ),
     );

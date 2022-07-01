@@ -26,7 +26,7 @@ class Post extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          UserTile(fullname: fullname, speciality: speciality),
+          UserTile(fullname: fullname, speciality: speciality,guid: ''),
           //-----------------Tagged people-----------------//
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),

@@ -31,10 +31,10 @@ class RecommandsScreen extends StatelessWidget {
         color: AppTheme.backgroundColor,
         child: ListView(
           children: const [
-            UserTile(fullname: 'Ennachat', speciality: 'Redwan'),
-            UserTile(fullname: 'Ennachat', speciality: 'Redwan'),
-            UserTile(fullname: 'Ennachat', speciality: 'Redwan'),
-            UserTile(fullname: 'Ennachat', speciality: 'Redwan'),
+            UserTile(fullname: 'Ennachat', speciality: 'Redwan',guid: ''),
+            UserTile(fullname: 'Ennachat', speciality: 'Redwan',guid: ''),
+            UserTile(fullname: 'Ennachat', speciality: 'Redwan',guid: ''),
+            UserTile(fullname: 'Ennachat', speciality: 'Redwan',guid: ''),
           ],
         ),
       ),
