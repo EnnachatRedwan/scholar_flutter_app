@@ -14,8 +14,9 @@ class UserProfileBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User? user=Provider.of<UserProvider>(context).user;
+    var theme=Provider.of<AppTheme>(context);
     return Container(
-      color: AppTheme.backgroundColor,
+      color: theme.backgroundColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -32,13 +33,13 @@ class UserProfileBanner extends StatelessWidget {
             ),
             title: Text(
               user!.fullname,
-              style: const TextStyle(fontSize: AppTheme.titleSize,color: AppTheme.textColor),
+              style: TextStyle(fontSize: theme.titleSize,color: theme.textColor),
             ),
             subtitle: Text(
               user.speciality,
-              style: const TextStyle(
-                  fontSize: AppTheme.subTitleSize,
-                  color: AppTheme.subTextColor),
+              style: TextStyle(
+                  fontSize: theme.subTitleSize,
+                  color: theme.subTextColor),
             ),
           ),
           InkWell(
@@ -61,7 +62,7 @@ class UserProfileBanner extends StatelessWidget {
                 'Add Post',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
-                  fontSize: AppTheme.buttonTextSize,
+                  fontSize: theme.buttonTextSize,
                 ),
               ),
             ),

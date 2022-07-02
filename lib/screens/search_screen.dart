@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 import '../widgets/search.dart';
@@ -11,9 +12,10 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0.0,
         centerTitle: true,
         title: Text(

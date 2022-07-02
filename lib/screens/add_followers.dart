@@ -44,9 +44,10 @@ class _AddFollowersState extends State<AddFollowers> {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0.0,
         centerTitle: true,
         title: Text(
@@ -60,7 +61,7 @@ class _AddFollowersState extends State<AddFollowers> {
       body: Container(
         margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(8),
-        color: AppTheme.backgroundColor,
+        color: theme.backgroundColor,
         child: _filled
             ? SizedBox(
                 height: 300,

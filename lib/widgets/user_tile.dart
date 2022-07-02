@@ -23,9 +23,10 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: AppTheme.subTextColor.withOpacity(.5),
+        backgroundColor: theme.subTextColor.withOpacity(.5),
         child: const Icon(
           Icons.person,
           color: Colors.white,
@@ -33,13 +34,13 @@ class UserTile extends StatelessWidget {
       ),
       title: Text(
         fullname,
-        style: const TextStyle(
-            fontSize: AppTheme.smalTitleSize, color: AppTheme.textColor),
+        style: TextStyle(
+            fontSize: theme.smalTitleSize, color: theme.textColor),
       ),
       subtitle: Text(
         speciality,
-        style: const TextStyle(
-            fontSize: AppTheme.smalSubTitleSize, color: AppTheme.subTextColor),
+        style: TextStyle(
+            fontSize: theme.smalSubTitleSize, color: theme.subTextColor),
       ),
       //-----------------Follow button-----------------//
       trailing: IconButton(

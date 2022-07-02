@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 import '../widgets/title.dart';
@@ -75,9 +76,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     var bounds = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: theme.backgroundColor,
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 
@@ -11,8 +11,9 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: theme.backgroundColor,
       body: Center(
           child: SpinKitSquareCircle(
         color: Theme.of(context).primaryColor,

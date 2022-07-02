@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 import './user_tile.dart';
@@ -19,21 +20,22 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Provider.of<AppTheme>(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
-      color: AppTheme.backgroundColor,
+      color: theme.backgroundColor,
       padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          UserTile(fullname: fullname, speciality: speciality,guid: ''),
+          UserTile(fullname: fullname, speciality: speciality, guid: ''),
           //-----------------Tagged people-----------------//
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               'Ennachat Redwan and $tags others',
-              style: const TextStyle(
-                color: AppTheme.subTextColor,
+              style: TextStyle(
+                color: theme.subTextColor,
               ),
             ),
           ),
@@ -47,7 +49,10 @@ class Post extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               content,
-              style: const TextStyle(fontSize: AppTheme.textSize,color: AppTheme.textColor,),
+              style: TextStyle(
+                fontSize: theme.textSize,
+                color: theme.textColor,
+              ),
             ),
           ),
         ],

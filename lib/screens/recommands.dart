@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/user_tile.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 import '../widgets/back_button.dart';
@@ -12,9 +13,10 @@ class RecommandsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bounds=MediaQuery.of(context).size;
+    var theme=Provider.of<AppTheme>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0.0,
         centerTitle: true,
         title: Text(
@@ -28,7 +30,7 @@ class RecommandsScreen extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.all(8),
         padding: EdgeInsets.symmetric(vertical:8,horizontal: bounds.width/10),
-        color: AppTheme.backgroundColor,
+        color: theme.backgroundColor,
         child: ListView(
           children: const [
             UserTile(fullname: 'Ennachat', speciality: 'Redwan',guid: ''),

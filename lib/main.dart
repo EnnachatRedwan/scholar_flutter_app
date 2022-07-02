@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scholar_app/themes/theme.dart';
 
 import 'screens/login_screen.dart';
 import './screens/home.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => UserProvider(),)
+        ChangeNotifierProvider(create: (context) => UserProvider(),),
+        ChangeNotifierProvider(create: (context) => AppTheme(),)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

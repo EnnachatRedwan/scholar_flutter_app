@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 import '../widgets/drawer_list.dart';
@@ -13,10 +14,11 @@ class TabletLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Provider.of<AppTheme>(context);
     return Scaffold(
-      backgroundColor: AppTheme.homeBackgroundColor,
+      backgroundColor: theme.homeBackgroundColor,
       appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0.0,
         centerTitle: true,
         title: Text(
@@ -37,7 +39,7 @@ class TabletLayout extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(8),
-              color: AppTheme.backgroundColor,
+              color: theme.backgroundColor,
               child: const DrawerList(),
             ),
           ),

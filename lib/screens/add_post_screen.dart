@@ -44,9 +44,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var theme= Provider.of<AppTheme>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0.0,
         centerTitle: true,
         title: Text(
@@ -60,7 +61,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       body: Container(
         margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(8),
-        color: AppTheme.backgroundColor,
+        color: theme.backgroundColor,
         child: ListView(
           children: [
             const TextField(
@@ -107,7 +108,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   'Add Post',
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
-                    fontSize: AppTheme.buttonTextSize,
+                    fontSize: theme.buttonTextSize,
                   ),
                 ),
               ),

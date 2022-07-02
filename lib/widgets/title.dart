@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 
@@ -15,13 +16,15 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bounds = MediaQuery.of(context).size;
+    var theme=Provider.of<AppTheme>(context);
+    
     return Padding(
       padding: EdgeInsets.symmetric(vertical: bounds.height * padding),
       child: Text(
         title,
-        style: const TextStyle(
-          color: AppTheme.textColor,
-          fontSize: AppTheme.bigTitleSize,
+        style: TextStyle(
+          color: theme.textColor,
+          fontSize: theme.bigTitleSize,
         ),
       ),
     );

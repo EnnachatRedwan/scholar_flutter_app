@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 
@@ -14,13 +15,17 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Provider.of<AppTheme>(context);
     return ListTile(
-      leading: Icon(icon,color: AppTheme.drawerTextColor,),
+      leading: Icon(
+        icon,
+        color: theme.drawerTextColor,
+      ),
       title: Text(
         title,
-        style: const TextStyle(
-          color: AppTheme.drawerTextColor,
-          fontSize: AppTheme.textSize,
+        style: TextStyle(
+          color: theme.drawerTextColor,
+          fontSize: theme.textSize,
         ),
       ),
     );

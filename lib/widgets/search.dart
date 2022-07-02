@@ -37,10 +37,11 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
-      color: AppTheme.backgroundColor,
+      color: theme.backgroundColor,
       child: Column(
         children: [
           TextField(

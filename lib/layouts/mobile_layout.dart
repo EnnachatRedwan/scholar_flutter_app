@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
 import '../widgets/drawer_list.dart';
@@ -13,10 +14,11 @@ class MobileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     return Scaffold(
-      backgroundColor: AppTheme.homeBackgroundColor,
+      backgroundColor: theme.homeBackgroundColor,
       appBar: AppBar(
-        backgroundColor: AppTheme.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0.0,
         centerTitle: true,
         title: Text(
@@ -40,9 +42,9 @@ class MobileLayout extends StatelessWidget {
           ),
         ),
       ),
-      drawer: const Drawer(
-        backgroundColor: AppTheme.backgroundColor,
-        child: DrawerList(),
+      drawer: Drawer(
+        backgroundColor: theme.backgroundColor,
+        child: const DrawerList(),
       ),
       body: Column(
         children: [

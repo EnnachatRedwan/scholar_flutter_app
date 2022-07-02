@@ -72,8 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     var bounds = MediaQuery.of(context).size;
+    var theme=Provider.of<AppTheme>(context);
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: theme.backgroundColor,
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(
