@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scholar_app/models/user.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../providers/user_provider.dart';
 import '../themes/theme.dart';
@@ -19,6 +20,8 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   List<User> _users = [];
 
+  bool _filled = true;
+
   void _fetchData(String value) async {
     List<User> users = [];
     if (value.trim().isNotEmpty) {
@@ -28,6 +31,7 @@ class _SearchState extends State<Search> {
     }
     setState(() {
       _users = users;
+      _filled = true;
     });
   }
 
@@ -46,17 +50,25 @@ class _SearchState extends State<Search> {
               border: OutlineInputBorder(),
             ),
             onChanged: (value) {
-              _fetchData(value);
+              _filled = false;
+              setState(() {
+                _fetchData(value);
+              });
             },
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: _users.length,
-              itemBuilder: (_, i) => UserTile(
-                  fullname: _users[i].fullname,
-                  speciality: _users[i].speciality,
-                  guid: _users[i].guid),
-            ),
+            child: _filled
+                ? ListView.builder(
+                    itemCount: _users.length,
+                    itemBuilder: (_, i) => UserTile(
+                        fullname: _users[i].fullname,
+                        speciality: _users[i].speciality,
+                        guid: _users[i].guid),
+                  )
+                : SpinKitSquareCircle(
+                    color: Theme.of(context).primaryColor,
+                    size: 50.0,
+                  ),
           ),
         ],
       ),
