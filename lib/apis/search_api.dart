@@ -6,11 +6,11 @@ import './ip_adress.dart';
 import '../models/user.dart';
 
 class SearchApi {
-  static Future<List<User>> fetchFullName(String fullname) async {
+  static Future<List<User>> fetchFullName(String fullname,String userFullName) async {
     List<User> users=[];
     var url = Uri.parse('http://${IpAdress.ip}:3000/search');
     var response =
-        await http.get(url, headers: {"fullname": fullname});
+        await http.get(url, headers: {"fullname": fullname,"user":userFullName});
     var data = jsonDecode(response.body);
     if(data.length>0){
       for(int i=0;i<data.length;i++){

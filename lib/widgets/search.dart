@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scholar_app/models/user.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/user_provider.dart';
 import '../themes/theme.dart';
 import './user_tile.dart';
 import '../apis/search_api.dart';
@@ -18,9 +20,11 @@ class _SearchState extends State<Search> {
   List<User> _users = [];
 
   void _fetchData(String value) async {
-    List<User> users=[];
+    List<User> users = [];
     if (value.trim().isNotEmpty) {
-      users = await SearchApi.fetchFullName(value);
+      String fullName =
+          Provider.of<UserProvider>(context, listen: false).user!.fullname;
+      users = await SearchApi.fetchFullName(value, fullName);
     }
     setState(() {
       _users = users;
