@@ -6,18 +6,18 @@ import '../themes/theme.dart';
 import '../apis/follow_api.dart';
 
 class UserTile extends StatelessWidget {
-  const UserTile({
-    Key? key,
-    required this.fullname,
-    required this.speciality,
-    required this.guid
-  }) : super(key: key);
+  const UserTile(
+      {Key? key,
+      required this.fullname,
+      required this.speciality,
+      required this.guid})
+      : super(key: key);
 
   final String fullname;
   final String speciality;
   final String guid;
 
-  void _follow(String guid1,String guid2) async {
+  void _follow(String guid1, String guid2) async {
     await FollowApi.createFollow(guid1, guid2);
   }
 
@@ -33,19 +33,26 @@ class UserTile extends StatelessWidget {
       ),
       title: Text(
         fullname,
-        style: const TextStyle(fontSize: AppTheme.smalTitleSize,color: AppTheme.textColor),
+        style: const TextStyle(
+            fontSize: AppTheme.smalTitleSize, color: AppTheme.textColor),
       ),
       subtitle: Text(
         speciality,
         style: const TextStyle(
-            fontSize: AppTheme.smalSubTitleSize,
-            color: AppTheme.subTextColor),
+            fontSize: AppTheme.smalSubTitleSize, color: AppTheme.subTextColor),
       ),
       //-----------------Follow button-----------------//
       trailing: IconButton(
           onPressed: () {
-            String guid1=Provider.of<UserProvider>(context,listen: false).user!.guid;
-            _follow(guid1,guid);
+            String guid1 =
+                Provider.of<UserProvider>(context, listen: false).user!.guid;
+            _follow(guid1, guid);
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: const Text('Following successfully'),
+              duration: const Duration(seconds: 2),
+              backgroundColor: Theme.of(context).primaryColor,
+            ));
           },
           icon: Icon(
             Icons.add,

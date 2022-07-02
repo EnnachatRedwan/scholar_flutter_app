@@ -59,11 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _showSnackBar() {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
         'Wrong email or password',
       ),
       backgroundColor: Colors.red,
+      duration: Duration(seconds: 2),
     ));
   }
 
