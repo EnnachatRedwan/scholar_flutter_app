@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/user_provider.dart';
 import '../themes/theme.dart';
+import '../apis/follow_api.dart';
 
 class UserTile extends StatelessWidget {
   const UserTile({
@@ -13,6 +16,10 @@ class UserTile extends StatelessWidget {
   final String fullname;
   final String speciality;
   final String guid;
+
+  void _follow(String guid1,String guid2) async {
+    await FollowApi.createFollow(guid1, guid2);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,10 @@ class UserTile extends StatelessWidget {
       ),
       //-----------------Follow button-----------------//
       trailing: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            String guid1=Provider.of<UserProvider>(context,listen: false).user!.guid;
+            _follow(guid1,guid);
+          },
           icon: Icon(
             Icons.add,
             color: Theme.of(context).primaryColor,

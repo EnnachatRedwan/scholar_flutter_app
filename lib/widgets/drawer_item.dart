@@ -15,7 +15,7 @@ class DrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon),
+      leading: Icon(icon,color: AppTheme.drawerTextColor,),
       title: Text(
         title,
         style: const TextStyle(

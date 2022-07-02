@@ -32,7 +32,7 @@ class UserProfileBanner extends StatelessWidget {
             ),
             title: Text(
               user!.fullname,
-              style: const TextStyle(fontSize: AppTheme.titleSize),
+              style: const TextStyle(fontSize: AppTheme.titleSize,color: AppTheme.textColor),
             ),
             subtitle: Text(
               user.speciality,
