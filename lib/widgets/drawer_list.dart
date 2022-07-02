@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:scholar_app/themes/theme.dart';
 
 import './drawer_item.dart';
 import '../screens/recommands.dart';
@@ -9,6 +11,7 @@ class DrawerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme=Provider.of<AppTheme>(context);
     return ListView(
       children: [
         const SizedBox(
@@ -30,6 +33,15 @@ class DrawerList extends StatelessWidget {
           child: const DrawerItem(
             title: 'Followers',
             icon: Icons.person_add_alt_rounded,
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            theme.toggleAppearance();
+          },
+          child: DrawerItem(
+            title: theme.isLight? 'Dark':'Light',
+            icon: theme.isLight? Icons.dark_mode:Icons.light_mode,
           ),
         ),
       ],
