@@ -17,8 +17,8 @@ class AppTheme with ChangeNotifier {
 
   void toggleAppearance() {
     if (isLight) {
-      backgroundColor = const Color.fromARGB(255, 0, 0, 0);
-      homeBackgroundColor = const Color.fromARGB(255, 53, 53, 53);
+      backgroundColor = Color.fromARGB(255, 40, 40, 40);
+      homeBackgroundColor = Color.fromARGB(255, 21, 21, 21);
       textColor = const Color.fromARGB(255, 255, 255, 255);
       subTextColor = const Color.fromARGB(255, 153, 153, 153);
       drawerTextColor = const Color.fromARGB(255, 162, 162, 162);

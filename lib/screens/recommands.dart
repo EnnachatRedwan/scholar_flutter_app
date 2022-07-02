@@ -15,6 +15,7 @@ class RecommandsScreen extends StatelessWidget {
     var bounds=MediaQuery.of(context).size;
     var theme=Provider.of<AppTheme>(context);
     return Scaffold(
+      backgroundColor: theme.homeBackgroundColor,
       appBar: AppBar(
         backgroundColor: theme.backgroundColor,
         elevation: 0.0,

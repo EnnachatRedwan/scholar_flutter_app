@@ -37,7 +37,7 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    var theme=Provider.of<AppTheme>(context);
+    var theme = Provider.of<AppTheme>(context);
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
@@ -45,11 +45,16 @@ class _SearchState extends State<Search> {
       child: Column(
         children: [
           TextField(
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Search',
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: theme.subTextColor),
+              prefixIcon: Icon(Icons.search,color: theme.subTextColor,),
+              border: const OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: theme.subTextColor),
+              ),
             ),
+            style: TextStyle(color: theme.textColor),
             onChanged: (value) {
               _filled = false;
               setState(() {
