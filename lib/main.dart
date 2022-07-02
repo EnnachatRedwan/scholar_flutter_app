@@ -8,6 +8,7 @@ import './screens/search_screen.dart';
 import './screens/add_post_screen.dart';
 import './screens/recommands.dart';
 import './screens/loading_screen.dart';
+import './screens/add_followers.dart';
 
 import './providers/user_provider.dart';
 
@@ -48,7 +49,8 @@ class MyApp extends StatelessWidget {
           SearchScreen.routeName: (context) => const SearchScreen(),
           AddPostScreen.routeName: (context) => const AddPostScreen(),
           RecommandsScreen.routeName: (context) => const RecommandsScreen(),
-          LoadingScreen.routeName:(context) => const LoadingScreen()
+          LoadingScreen.routeName:(context) => const LoadingScreen(),
+          AddFollowers.routeName:(context) => const AddFollowers()
         },
       ),
     );
