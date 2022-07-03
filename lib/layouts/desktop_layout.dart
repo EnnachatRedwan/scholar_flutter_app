@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../themes/theme.dart';
-import '../widgets/post.dart';
+import '../widgets/posts_list.dart';
 import '../widgets/search.dart';
 import '../widgets/user_profile_banner.dart';
 import '../widgets/drawer_list.dart';
@@ -14,7 +14,7 @@ class DesktopLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme=Provider.of<AppTheme>(context);
+    var theme = Provider.of<AppTheme>(context);
     return Scaffold(
       backgroundColor: theme.homeBackgroundColor,
       appBar: AppBar(
@@ -43,42 +43,9 @@ class DesktopLayout extends StatelessWidget {
           Flexible(
             flex: 3,
             child: Column(
-              children: [
-                const UserProfileBanner(),
-                Expanded(
-                  child: ListView(
-                    children: const [
-                      Post(
-                        fullname: 'Abli Nawal',
-                        tags: 2,
-                        content:
-                            'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
-                        speciality: 'Mobile Developper',
-                      ),
-                      Post(
-                        fullname: 'Ennachat Ayoub',
-                        tags: 1,
-                        content:
-                            'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
-                        speciality: 'Web Developper',
-                      ),
-                      Post(
-                        fullname: 'Abli Nawal',
-                        tags: 2,
-                        content:
-                            'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
-                        speciality: 'Mobile Developper',
-                      ),
-                      Post(
-                        fullname: 'Ennachat Ayoub',
-                        tags: 1,
-                        content:
-                            'Machne learnin is one of the best fields you can learn in 2022 because the whole world needs machine learning scientists',
-                        speciality: 'Web Developper',
-                      ),
-                    ],
-                  ),
-                ),
+              children: const [
+                UserProfileBanner(),
+                Expanded(child: PostsList()),
               ],
             ),
           ),

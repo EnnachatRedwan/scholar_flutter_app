@@ -8,6 +8,7 @@ import '../widgets/user_tagg.dart';
 import '../apis/followers_api.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
+import '../apis/add_post_api.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -20,6 +21,10 @@ class AddPostScreen extends StatefulWidget {
 
 class _AddPostScreenState extends State<AddPostScreen> {
   bool didFetched = false;
+
+  final _formKey = GlobalKey<FormState>();
+
+  String _contentText = '';
 
   @override
   void didChangeDependencies() {
@@ -40,6 +45,34 @@ class _AddPostScreenState extends State<AddPostScreen> {
       _users.addAll(users);
       _filled = true;
     });
+  }
+
+  List<String> _tags=[];
+
+  void _toggleTag(String guid){
+    _tags.contains(guid)?_tags.remove(guid):_tags.add(guid);
+    print(_tags);
+  }
+
+  void _saveForm() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      _postContent(_contentText,
+          Provider.of<UserProvider>(context, listen: false).user!.guid,_tags);
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Posted!'),
+          duration: const Duration(seconds: 2),
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+      );
+      Navigator.of(context).pop();
+    }
+  }
+
+  void _postContent(String content, String user,List<String> tags) async {
+    await AddPostApi.addPost(user, content,tags);
   }
 
   @override
@@ -65,24 +98,39 @@ class _AddPostScreenState extends State<AddPostScreen> {
         color: theme.backgroundColor,
         child: ListView(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Content',
-                hintStyle: TextStyle(color: theme.subTextColor),
-                border: const OutlineInputBorder(),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: theme.subTextColor),
+            Form(
+              key: _formKey,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Content',
+                  hintStyle: TextStyle(color: theme.subTextColor),
+                  border: const OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.subTextColor),
+                  ),
                 ),
+                style: TextStyle(color: theme.textColor),
+                maxLines: 7,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please provide a post content.';
+                  }
+                  if (value.length < 20) {
+                    return 'Post content should be greater than 20.';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _contentText = value!;
+                },
               ),
-              style: TextStyle(color: theme.textColor),
-              maxLines: 7,
             ),
             _filled
                 ? SizedBox(
                     height: 300,
                     child: ListView.builder(
                       itemCount: _users.length,
-                      itemBuilder: (_, i) => UserTag(name: _users[i].fullname),
+                      itemBuilder: (_, i) => UserTag(name: _users[i].fullname,toggleTag:()=>_toggleTag(_users[i].guid)),
                     ),
                   )
                 : Container(
@@ -93,7 +141,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     ),
                   ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                _saveForm();
+              },
               child: Container(
                 constraints: const BoxConstraints(maxWidth: 400),
                 padding: const EdgeInsets.symmetric(horizontal: 10),

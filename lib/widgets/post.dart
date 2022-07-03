@@ -33,7 +33,7 @@ class Post extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              'Ennachat Redwan and $tags others',
+              '$fullname and $tags others',
               style: TextStyle(
                 color: theme.subTextColor,
               ),
