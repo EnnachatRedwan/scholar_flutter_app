@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../models/post.dart';
 import './post.dart';
@@ -15,6 +16,7 @@ class PostsList extends StatefulWidget {
 
 class _PostsListState extends State<PostsList> {
   bool _fetched = false;
+  bool _isloaded = false;
 
   final List<PostModel> _posts = [];
 
@@ -32,19 +34,26 @@ class _PostsListState extends State<PostsList> {
     var posts = await PostsApi.fetchPosts(guid);
     setState(() {
       _posts.addAll(posts);
+      _isloaded = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _posts.length,
-      itemBuilder: (_, i) => Post(
-        fullname: _posts[i].fullname,
-        content:
-            _posts[i].content,
-        speciality: _posts[i].speciality,
-      ),
-    );
+    return _isloaded
+        ? ListView.builder(
+            itemCount: _posts.length,
+            itemBuilder: (_, i) => Post(
+              fullname: _posts[i].fullname,
+              content: _posts[i].content,
+              speciality: _posts[i].speciality,
+            ),
+          )
+        : Center(
+            child: SpinKitSquareCircle(
+              color: Theme.of(context).primaryColor,
+              size: 50.0,
+            ),
+          );
   }
 }
