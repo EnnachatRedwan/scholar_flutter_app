@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scholar_app/themes/theme.dart';
 
+import '../providers/user_provider.dart';
 import './drawer_item.dart';
 import '../screens/recommands.dart';
 import '../screens/add_followers.dart';
+import '../screens/login_screen.dart';
 
 class DrawerList extends StatelessWidget {
   const DrawerList({Key? key}) : super(key: key);
@@ -42,6 +44,16 @@ class DrawerList extends StatelessWidget {
           child: DrawerItem(
             title: theme.isLight? 'Dark':'Light',
             icon: theme.isLight? Icons.dark_mode:Icons.light_mode,
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            Provider.of<UserProvider>(context,listen: false).user=null;
+            Navigator.of(context).pushNamed(LoginScreen.routeName);
+          },
+          child: const DrawerItem(
+            title: 'Log out',
+            icon: Icons.logout,
           ),
         ),
       ],
