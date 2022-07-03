@@ -8,7 +8,7 @@ import '../models/user.dart';
 class SearchApi {
   static Future<List<User>> fetchFullName(String fullname,String userFullName) async {
     List<User> users=[];
-    var url = Uri.parse('http://${IpAdress.ip}:3000/search');
+    var url = Uri.parse('${IpAdress.ip}/search');
     var response =
         await http.get(url, headers: {"fullname": fullname,"user":userFullName});
     var data = jsonDecode(response.body);

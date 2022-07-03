@@ -13,7 +13,7 @@ class LoginApi{
   LoginApi(this.email,this.password);
 
   Future<User?> authUser() async{
-    var url=Uri.parse('http://${IpAdress.ip}:3000/login');
+    var url=Uri.parse('${IpAdress.ip}/login');
     var response= await http.get(url,headers: {"email":email,"password":password});
     if(response.statusCode==401){
       return null;

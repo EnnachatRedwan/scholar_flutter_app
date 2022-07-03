@@ -8,7 +8,7 @@ import '../models/user.dart';
 class RecommendsApi {
   static Future<List<User>> fetchFollowers(String guid) async {
     List<User> users=[];
-    var url = Uri.parse('http://${IpAdress.ip}:3000/recommendation');
+    var url = Uri.parse('${IpAdress.ip}/recommendation');
     var response =
         await http.get(url, headers: {"user":guid});
     var data = jsonDecode(response.body);

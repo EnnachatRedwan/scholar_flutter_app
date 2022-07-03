@@ -7,7 +7,7 @@ import './ip_adress.dart';
 class PostsApi {
   static Future<List<PostModel>> fetchPosts(String guid) async {
     List<PostModel> posts = [];
-    var url = Uri.parse('http://${IpAdress.ip}:3000/posts');
+    var url = Uri.parse('${IpAdress.ip}/posts');
     var response = await http.get(url, headers: {"user": guid});
     var data = jsonDecode(response.body);
     if (data.length > 0) {
