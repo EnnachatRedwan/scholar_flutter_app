@@ -47,11 +47,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
     });
   }
 
-  List<String> _tags=[];
+  final List<String> _tags=[];
 
   void _toggleTag(String guid){
     _tags.contains(guid)?_tags.remove(guid):_tags.add(guid);
-    print(_tags);
   }
 
   void _saveForm() {

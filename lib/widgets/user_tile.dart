@@ -23,7 +23,7 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme=Provider.of<AppTheme>(context);
+    var theme = Provider.of<AppTheme>(context);
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: theme.subTextColor.withOpacity(.5),
@@ -34,8 +34,7 @@ class UserTile extends StatelessWidget {
       ),
       title: Text(
         fullname,
-        style: TextStyle(
-            fontSize: theme.smalTitleSize, color: theme.textColor),
+        style: TextStyle(fontSize: theme.smalTitleSize, color: theme.textColor),
       ),
       subtitle: Text(
         speciality,
@@ -43,22 +42,26 @@ class UserTile extends StatelessWidget {
             fontSize: theme.smalSubTitleSize, color: theme.subTextColor),
       ),
       //-----------------Follow button-----------------//
-      trailing: IconButton(
-          onPressed: () {
-            String guid1 =
-                Provider.of<UserProvider>(context, listen: false).user!.guid;
-            _follow(guid1, guid);
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: const Text('Following successfully'),
-              duration: const Duration(seconds: 2),
-              backgroundColor: Theme.of(context).primaryColor,
-            ));
-          },
-          icon: Icon(
-            Icons.add,
-            color: Theme.of(context).primaryColor,
-          )),
+      trailing: guid.isNotEmpty
+          ? IconButton(
+              onPressed: () {
+                String guid1 = Provider.of<UserProvider>(context, listen: false)
+                    .user!
+                    .guid;
+                _follow(guid1, guid);
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: const Text('Following successfully'),
+                  duration: const Duration(seconds: 2),
+                  backgroundColor: Theme.of(context).primaryColor,
+                ));
+              },
+              icon: Icon(
+                Icons.add,
+                color: Theme.of(context).primaryColor,
+              ),
+            )
+          : null,
     );
   }
 }

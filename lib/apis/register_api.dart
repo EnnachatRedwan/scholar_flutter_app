@@ -14,7 +14,6 @@ class RegisterApi{
   Future<bool> regUser() async{
     var url=Uri.parse('http://${IpAdress.ip}:3000/register');
     var response= await http.post(url,body: {"email":email,"password":password,"fullname":fullName,"speciality":speciality});
-    print(response.statusCode);
     if(response.statusCode==500){
       return false;
     }

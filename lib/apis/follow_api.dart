@@ -5,7 +5,6 @@ import './ip_adress.dart';
 class FollowApi {
   static Future<void> createFollow(String guid1,String guid2) async {
     var url = Uri.parse('http://${IpAdress.ip}:3000/follow');
-    var response =
-        await http.post(url, body: {"user1": guid1,"user2":guid2});
+    await http.post(url, body: {"user1": guid1,"user2":guid2});
   }
 }

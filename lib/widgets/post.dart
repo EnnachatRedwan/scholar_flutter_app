@@ -10,12 +10,10 @@ class Post extends StatelessWidget {
     required this.content,
     required this.fullname,
     required this.speciality,
-    required this.tags,
   }) : super(key: key);
 
   final String fullname;
   final String speciality;
-  final int tags;
   final String content;
 
   @override
@@ -30,15 +28,15 @@ class Post extends StatelessWidget {
         children: [
           UserTile(fullname: fullname, speciality: speciality, guid: ''),
           //-----------------Tagged people-----------------//
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Text(
-              '$fullname and $tags others',
-              style: TextStyle(
-                color: theme.subTextColor,
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          //   child: Text(
+          //     '$fullname and $tags others',
+          //     style: TextStyle(
+          //       color: theme.subTextColor,
+          //     ),
+          //   ),
+          // ),
           //-----------------Divider-----------------//
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
