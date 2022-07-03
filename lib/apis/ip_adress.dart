@@ -1,3 +1,3 @@
 class IpAdress{
-  static const String ip='192.168.1.32';
+  static const String ip='127.0.0.1';
 }
