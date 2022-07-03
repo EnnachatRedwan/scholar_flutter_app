@@ -109,13 +109,17 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   ),
                 ),
                 style: TextStyle(color: theme.textColor),
-                maxLines: 7,
+                maxLines: 8,
+                maxLength:1500,
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value!.trim().isEmpty) {
                     return 'Please provide a post content.';
                   }
                   if (value.length < 20) {
                     return 'Post content should be greater than 20.';
+                  }
+                  if(value.length>2000){
+                    return 'Post content should be less than 2000 characters';
                   }
                   return null;
                 },

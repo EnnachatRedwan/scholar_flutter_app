@@ -116,7 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               FocusScope.of(context).requestFocus(_emailFocus);
                             },
                             validator: (value) {
-                              if (value!.isEmpty) {
+                              if (value!.trim().isEmpty) {
                                 return 'Please provide a full name.';
                               }
                               if (value.length < 5 || value.length > 20) {
@@ -142,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                             textInputAction: TextInputAction.next,
                             validator: (value) {
-                              if (value!.isEmpty) {
+                              if (value!.trim().isEmpty) {
                                 return 'Please provide an email.';
                               }
                               if (!RegExp(
@@ -173,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   .requestFocus(_confirmPasswordFocus);
                             },
                             validator: (value) {
-                              if (value!.isEmpty) {
+                              if (value!.trim().isEmpty) {
                                 return 'Please provide a password.';
                               }
                               if (value.length < 8) {
@@ -197,7 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             obscureText: true,
                             focusNode: _confirmPasswordFocus,
                             validator: (value) {
-                              if (value != _passwordController.text) {
+                              if (value!.trim() != _passwordController.text) {
                                 return 'Password should match';
                               }
                               return null;
@@ -217,7 +217,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             focusNode: _specialityFocus,
                             onFieldSubmitted: (_) => _validAndSubmit(),
                             validator: (value) {
-                              if (value!.isEmpty) {
+                              if (value!.trim().isEmpty) {
                                 return 'Please provide a speciality.';
                               }
                               if (value.length < 5) {
